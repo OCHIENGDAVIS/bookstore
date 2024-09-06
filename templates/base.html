@@ -1,14 +1,40 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
 </head>
 <body>
+    <div>
+        <ul>
+            <li>
+                <a href="{% url 'pages:home' %}">Home</a>
+            </li>
+            <li>
+                <a href="{% url 'pages:about' %}">About</a>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li>
+                <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Loout" />
+                </form>
+            </li>
+            {%else%}
+            <li>
+                <a href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
     <div>
         {% block content %}
         {% endblock %}
     </div>
+    <script src="{% static 'js/base.js' %}"></script>
 </body>
 </html>
