@@ -9,12 +9,12 @@
     <img class="book-img" src="{% static 'images/dfp.jpg' %}" />
     {% if user.is_authenticated %}
         <p>Hi, {{user.email}}</p>
-        <form method="POST" action="{% url 'logout' %}"> {% csrf_token %}
+        <form method="POST" action="{% url 'account_logout' %}"> {% csrf_token %}
             <input type="submit" value="logout" />
         </form>
     {% else %}
         <p>You are not logged in</p>
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'signup' %}">Sign up</a>
+        <a href="{% url 'account_login' %}">Login</a>
+        <a href="{% url 'account_signup' %}">Sign up</a>
     {% endif %}
 {% endblock %}
