@@ -4,7 +4,20 @@
 {% endblock %}
 
 {% block content %}
+    {% if book.cover %}
+        <img class="bookd-detail" src="{{book.cover.url}}" alt="{{book.title}}" />
+    {% else %}
+        
+    {% endif %}
     <h2>{{ book.title }}</h2>
     <p>Author: {{ book.author }}</p>
     <p>Price: {{ book.price }}</p>
+    <div>
+        <h3>Reviews</h3>
+        <ol>
+            {% for review in book.reviews.all %}
+                <li>{{ review.review }} {{ review.author }}</li>
+            {% endfor %}
+        </ol>
+    </div>
 {% endblock %}

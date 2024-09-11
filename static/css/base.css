@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
-.book-img{
+img{
     width: 10%;
 }
+
+.book-img {
+    width: 10%;
+}
+
